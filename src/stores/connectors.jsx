@@ -19,7 +19,7 @@ const RPC_URLS = {
 };
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [3]
+  supportedChainIds: [1]
 });
 
 // export const network = new NetworkConnector({
@@ -29,48 +29,48 @@ export const injected = new InjectedConnector({
 // });
 
 export const walletconnect = new WalletConnectConnector({
-  rpc: { 1: RPC_URLS[3] },
+  rpc: { 1: RPC_URLS[1] },
   bridge: "https://bridge.walletconnect.org",
   qrcode: true,
   pollingInterval: POLLING_INTERVAL
 });
 
 export const walletlink = new WalletLinkConnector({
-  url: RPC_URLS[3],
+  url: RPC_URLS[1],
   appName: "wfyfarm"
 });
 
 export const ledger = new LedgerConnector({
-  chainId: 3,
-  url: RPC_URLS[3],
+  chainId:1,
+  url: RPC_URLS[1],
   pollingInterval: POLLING_INTERVAL
 });
 
 export const trezor = new TrezorConnector({
-  chainId: 3,
-  url: RPC_URLS[3],
+  chainId: 1,
+  url: RPC_URLS[1],
   pollingInterval: POLLING_INTERVAL,
   manifestEmail: "dummy@abc.xyz",
   manifestAppUrl: "https://8rg3h.csb.app/"
 });
 
-export const frame = new FrameConnector({ supportedChainIds: [3] });
+export const frame = new FrameConnector({ supportedChainIds: [1] });
 
 export const fortmatic = new FortmaticConnector({
   apiKey: "pk_live_F95FEECB1BE324B5",
-  chainId: 3
+  chainId: 1
 });
 
 export const portis = new PortisConnector({
   dAppId: "211b48db-e8cc-4b68-82ad-bf781727ea9e",
-  networks: [3, 100]
+  networks: [1, 100]
 });
 
 export const squarelink = new SquarelinkConnector({
   clientId: "5f2a2233db82b06b24f9",
-  networks: [3, 100]
+  networks: [1, 100]
 });
 
-export const torus = new TorusConnector({ chainId: 3 });
+export const torus = new TorusConnector({ chainId: 1 });
 
-export const authereum = new AuthereumConnector({ chainId: 3 });
+export const authereum = new AuthereumConnector({ chainId: 1 });

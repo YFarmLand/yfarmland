@@ -1,5 +1,5 @@
 {
-  "homepage": "http://YFarmLand.github.io/yfarmland",
+  "homepage": "http://YFarmLand.github.io/",
   "name": "yfarmer",
   "version": "0.0.1",
   "private": true,
@@ -40,7 +40,7 @@
     "web3": "^1.2.11"
   },
   "scripts": {
-    "clean" : "gh-pages-clean",
+    "clean": "gh-pages-clean",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",

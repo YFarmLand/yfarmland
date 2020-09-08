@@ -114,7 +114,7 @@ class Store {
       rewardPools: [
         {
           id: 'Seed Pool',
-          name: 'fomopool.io',
+          name: 'yfarmland.finance',
           website: 'app.yfarmland.finance',
           link: 'https://app.yfarmland.finance/',
           YieldCalculatorLink: "",   //收益率器地址
@@ -122,7 +122,7 @@ class Store {
           tokens: [
             {
               id: 'WETH/YFARMER Uniswap',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1', //change
+              address: '0x9E4700445bD0deEEDE76Fb23dca904798E304f90',
               symbol: 'ETH',
               abi: config.erc20ABI,
               decimals: 6,
@@ -138,7 +138,7 @@ class Store {
             },
             {
               id: 'USDT/YFARMER Uniswap',
-              address: '0x198B05491bfC3868B48F3B743f058Ae92E8Fd930', //change
+              address: '0x260C1356E1379dc6510992b46b5bEdd2b3587C55', 
               symbol: 'USDT',
               abi: config.erc20ABI,
               decimals: 18,
@@ -164,7 +164,7 @@ class Store {
           tokens: [
             {
               id: 'WETH',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1',
+              address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
               symbol: 'ETH',
               abi: config.erc20ABI,
               decimals: 18,
@@ -179,8 +179,8 @@ class Store {
               lockedWithdraw:false
             },
             {
-              id: 'Comopound',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1',
+              id: 'Compound',
+              address: '0xc00e94Cb662C3520282E6f5717214004A7f26888',
               symbol: 'COMP',
               abi: config.erc20ABI,
               decimals: 18,
@@ -197,7 +197,7 @@ class Store {
             ,
             {
               id: 'YFI',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1',
+              address: '0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e',
               symbol: 'YFI',
               abi: config.erc20ABI,
               decimals: 18,
@@ -223,7 +223,7 @@ class Store {
           tokens: [
             {
               id: 'WETH',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1',
+              address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
               symbol: 'ETH',
               abi: config.erc20ABI,
               decimals: 18,
@@ -238,8 +238,8 @@ class Store {
               lockedWithdraw:false
             },
             {
-              id: 'Comopound',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1',
+              id: 'Compound',
+              address: '0xc00e94Cb662C3520282E6f5717214004A7f26888',
               symbol: 'COMP',
               abi: config.erc20ABI,
               decimals: 18,
@@ -256,7 +256,7 @@ class Store {
             ,
             {
               id: 'YFI',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1',
+              address: '0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e',
               symbol: 'YFI',
               abi: config.erc20ABI,
               decimals: 18,
@@ -282,7 +282,7 @@ class Store {
           tokens: [
             {
               id: 'WETH',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1',
+              address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
               symbol: 'ETH',
               abi: config.erc20ABI,
               decimals: 6,
@@ -297,8 +297,8 @@ class Store {
               lockedWithdraw:false
             },
             {
-              id: 'Comopound',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1',
+              id: 'Compound',
+              address: '0xc00e94Cb662C3520282E6f5717214004A7f26888',
               symbol: 'COMP',
               abi: config.erc20ABI,
               decimals: 18,
@@ -315,7 +315,7 @@ class Store {
             ,
             {
               id: 'YFI',
-              address: '0x1e323A06F806B76CE96bd103258f2aDAE70957f1',
+              address: '0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e',
               symbol: 'YFI',
               abi: config.erc20ABI,
               decimals: 18,
