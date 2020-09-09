@@ -229,6 +229,13 @@ class RewardPools extends Component {
             <div style={{ background: '#DC6BE5', opacity: '1', borderRadius: '10px', width: '10px', height: '10px', marginRight: '3px', marginTop:'3px', marginLeft:'6px' }}></div>
           </Card>
         </div>
+        <div className={ classes.intro } style={{marginTop:"15px"}}>
+          <Card className={ classes.addressContainer }>
+            <Typography variant={ 'h3'} className={ classes.walletTitle } noWrap>TVL: </Typography>
+         {/*  <Typography variant={ 'h4'} className={ classes.walletAddress } noWrap> 500k $</Typography>*/} 
+            <div style={{ background: '#DC6BE5', opacity: '1', borderRadius: '10px', width: '10px', height: '10px', marginRight: '3px', marginTop:'3px', marginLeft:'6px' }}></div>
+          </Card>
+        </div>
         <div className={ classes.rewardPools }>
           <Typography variant={ 'h3'} className={ classes.text } noWrap>{t('RewardPools.WhichTokens')}</Typography>
           {

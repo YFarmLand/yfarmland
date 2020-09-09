@@ -372,6 +372,7 @@ class Stake extends Component {
             <div style={{ background: '#DC6BE5', opacity: '1', borderRadius: '10px', width: '10px', height: '10px', marginRight: '3px', marginTop: '3px', marginLeft: '6px' }}></div>
           </Card>
         </div>
+
         <div className={classes.overview}>
           {/*
           <div className={ classes.overviewField }>
@@ -509,6 +510,7 @@ class Stake extends Component {
     return (
       <div className={classes.actions}>
         <Typography className={classes.stakeTitle} variant={'h3'}>{assets.id}</Typography>
+        <Typography className={classes.stakeTitle} variant={'h3'}>TVL: {assets.totalStaked} {assets.symbol}</Typography>
         {this.renderAssetInput(assets, 'stake')}
         <div className={classes.stakeButtons}>
           <Button
@@ -594,6 +596,7 @@ class Stake extends Component {
     return (
       <div className={classes.actions}>
         <Typography className={classes.stakeTitle} variant={'h3'}>{t('Stake.UnstakeYourTokens')}</Typography>
+        <Typography className={classes.stakeTitle} variant={'h3'}>TVL: {assets.totalStaked} {assets.symbol}</Typography>
         {this.renderAssetInput(assets, 'unstake')}
         <div className={classes.stakeButtons}>
           <Button

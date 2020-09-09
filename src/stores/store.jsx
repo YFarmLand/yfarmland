@@ -134,6 +134,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             },
             {
@@ -150,6 +151,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             }
           ]
@@ -176,6 +178,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             },
             {
@@ -192,6 +195,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             }
             ,
@@ -209,6 +213,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             }
           ]
@@ -235,6 +240,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             },
             {
@@ -251,6 +257,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             }
             ,
@@ -268,6 +275,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             }
           ]
@@ -294,6 +302,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             },
             {
@@ -310,6 +319,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             }
             ,
@@ -327,6 +337,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              totalStaked: 0,
               lockedWithdraw:false
             }
           ]
@@ -570,9 +581,8 @@ class Store {
           (callbackInnerInner) => { this._getERC20Balance(web3, token, account, callbackInnerInner) },
           (callbackInnerInner) => { this._getstakedBalance(web3, token, account, callbackInnerInner) },
           (callbackInnerInner) => { this._getRewardsAvailable(web3, token, account, callbackInnerInner) },
-          (callbackInnerInner) => { this._getLockedWithdraw(web3, token, account, callbackInnerInner)
-          
-           }
+          (callbackInnerInner) => { this._getLockedWithdraw(web3, token, account, callbackInnerInner) },
+          (callbackInnerInner) => { this._getTotalStakedBalance(web3, token, account, callbackInnerInner) }
         ], (err, data) => {
           if(err) {
             console.log(err)
@@ -582,6 +592,7 @@ class Store {
           token.stakedBalance = data[1]
           token.rewardsAvailable = data[2]
           token.lockedWithdraw = !data[3]
+          token.totalStaked = data[4]
           console.log(data[3])
           callbackInner(null, token)
         })
@@ -699,6 +710,19 @@ class Store {
     try {
       var balance = await erc20Contract.methods.balanceOf(account.address).call({ from: account.address });
       balance = parseFloat(balance)/10**asset.decimals
+      callback(null, parseFloat(balance))
+    } catch(ex) {
+      return callback(ex)
+    }
+  }
+
+  _getTotalStakedBalance = async (web3, asset, account, callback) => {
+    let erc20Contract = new web3.eth.Contract(config.erc20ABI, asset.address)
+
+    try {
+      var balance = await erc20Contract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
+      balance = parseFloat(balance)/10**asset.decimals
+      console.log(balance);
       callback(null, parseFloat(balance))
     } catch(ex) {
       return callback(ex)
