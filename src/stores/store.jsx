@@ -689,7 +689,7 @@ class Store {
       return callback(ex)
     }
   }
-
+//
   _getRewardsBalance = async (web3, asset, account, callback) => {
     console.log(web3,asset,account);
     let erc20Contract = new web3.eth.Contract(config.erc20ABI, asset)
