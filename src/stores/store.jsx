@@ -158,7 +158,7 @@ class Store {
         },
         {
           id: 'Annual Farm Pool',
-          name: 'fomopool.io',
+          name: 'Annual Farm Pool',
           website: 'app.yfarmland.finance',
           link: 'https://app.yfarmland.finance/',
           YieldCalculatorLink: "",   //收益率器地址
@@ -220,7 +220,7 @@ class Store {
         },
         {
           id: 'Biennial Farm Pool',
-          name: 'fomopool.io',
+          name: 'Biennial Farm Pool',
           website: 'app.yfarmland.finance',
           link: 'https://app.yfarmland.finance/',
           YieldCalculatorLink: "",   //收益率器地址
@@ -282,7 +282,7 @@ class Store {
         },
         {
           id: 'Perennial Farm Pool',
-          name: 'fomopool.io',
+          name: 'Perennial Farm Pool',
           website: 'app.yfarmland.finance',
           link: 'https://app.yfarmland.finance/',
           YieldCalculatorLink: "",   //收益率器地址
@@ -331,6 +331,33 @@ class Store {
               decimals: 18,
               rewardsAddress: config.preAnnualPoolYfiRewardsAddress,
               rewardsABI: config.yCurveFiRewardsABI,
+              rewardsSymbol: 'YFARMER',
+              Rewardsdecimals: 18,
+              rewardsBalance:0,
+              balance: 0,
+              stakedBalance: 0,
+              rewardsAvailable: 0,
+              totalStaked: 0,
+              lockedWithdraw:false
+            }
+          ]
+        },
+        {
+          id: 'Abracadabra Pot',
+          name: 'Abracadabra Pot',
+          website: 'app.yfarmland.finance',
+          link: 'https://app.yfarmland.finance/',
+          YieldCalculatorLink: "",   //收益率器地址
+          depositsEnabled: true,
+          tokens: [
+            {
+              id: 'YFARMER',
+              address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+              symbol: 'ETH',
+              abi: config.erc20ABI,
+              decimals: 18,
+              rewardsAddress: config.abracadabraPoolRewardsAddress,
+              rewardsABI: config.abracadabraABI,
               rewardsSymbol: 'YFARMER',
               Rewardsdecimals: 18,
               rewardsBalance:0,

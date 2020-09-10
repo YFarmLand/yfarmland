@@ -130,8 +130,9 @@ class Footer extends Component {
           <div className={classes.footerLinks}>
             <Typography className={classes.footerText} variant='h6'>
               <Link href="/">{t('Footer.Home')}</Link>
-              <Link href="#/staking">Pools</Link>
-              <Link target="_blank" href="https://yield.yfarmland.finance/">Yield Calculator</Link>
+              <Link href="#/staking">Pools</Link> 
+              <Link target="_blank" href="https://yield.yfarmland.finance/">Yield Calculator</Link> 
+              <Link target="_blank" href="https://process.yfarmland.finance/">Swap</Link> 
               {this.renderRewards()}
             </Typography>
           </div>
