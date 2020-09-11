@@ -10,7 +10,7 @@ const config = {
   preAnnualPoolEthRewardsAddress: '0x469D6360a051736A618e484c7BA15cbB0CeEd2CA', //DONE
   preAnnualPoolCompRewardsAddress: '0xF8C1424C3D78dF5CD8Cc086dC55205c5b4baE1B7',//done
   preAnnualPoolYfiRewardsAddress: '0x955Bb9b1D52E84f42fb712391c78270310751c19', //done
-  abracadabraPoolRewardsAddress: '',
+  abracadabraPoolRewardsAddress: '0x8401C50b52d9a12824E2882d038A6a586F6c9D7b',
   infuraProvider: 'https://mainnet.infura.io/v3/4f9a4d05fe6f464e809cd3f4325f5fe9',
   uniswapRewardsAddres: '0x0d26363a3a78315F440A91eA4aF7838D21Bd08Be',
   abracadabraABI:[

@@ -1,6 +1,7 @@
 import config from "../config";
 import async from 'async';
 import * as moment from 'moment';
+import $ from 'jquery';
 import {
   ERROR,
   CONFIGURE,
@@ -135,7 +136,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'ethereum',
+              usdValue:0
             },
             {
               id: 'USDT/YFARMER Uniswap',
@@ -152,7 +155,10 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'tether',
+              usdValue:0
+
             }
           ]
         },
@@ -179,7 +185,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'ethereum',
+              usdValue:0
             },
             {
               id: 'Compound',
@@ -196,7 +204,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'compound-governance-token',
+              usdValue:0
             }
             ,
             {
@@ -214,7 +224,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'yearn-finance',
+              usdValue:0
             }
           ]
         },
@@ -241,7 +253,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              coinGeckoName:'ethereum',
+              lockedWithdraw:false,
+              usdValue:0
             },
             {
               id: 'Compound',
@@ -258,7 +272,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'compound-governance-token',
+              usdValue:0
             }
             ,
             {
@@ -276,7 +292,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'yearn-finance',
+              usdValue:0
             }
           ]
         },
@@ -303,7 +321,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'ethereum',
+              usdValue:0
             },
             {
               id: 'Compound',
@@ -320,7 +340,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'compound-governance-token',
+              usdValue:0
             }
             ,
             {
@@ -338,7 +360,9 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'yearn-finance',
+              usdValue:0
             }
           ]
         },
@@ -351,21 +375,23 @@ class Store {
           depositsEnabled: true,
           tokens: [
             {
-              id: 'YFARMER',
-              address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+              id: 'WETH/pYFARMER Uniswap',
+              address: '0xff417643D4E98B52c7E894407dd23F8eDD8167f0',
               symbol: 'ETH',
               abi: config.erc20ABI,
               decimals: 18,
               rewardsAddress: config.abracadabraPoolRewardsAddress,
               rewardsABI: config.abracadabraABI,
-              rewardsSymbol: 'YFARMER',
+              rewardsSymbol: 'pYFARMER',
               Rewardsdecimals: 18,
               rewardsBalance:0,
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
               totalStaked: 0,
-              lockedWithdraw:false
+              lockedWithdraw:false,
+              coinGeckoName:'ethereum',
+              usdValue:0
             }
           ]
         }
@@ -619,7 +645,8 @@ class Store {
           token.stakedBalance = data[1]
           token.rewardsAvailable = data[2]
           token.lockedWithdraw = !data[3]
-          token.totalStaked = data[4]
+          token.totalStaked = data[4].balance
+          token.usdValue = data[4].usdvalue
           console.log(data[3])
           callbackInner(null, token)
         })
@@ -743,14 +770,46 @@ class Store {
     }
   }
 
+   lookUpPrices = async (id_array) => {
+    let ids = id_array.join("%2C");
+    return $.ajax({
+        url: "https://api.coingecko.com/api/v3/simple/price?ids=" + ids + "&vs_currencies=usd",
+        type: 'GET'
+    });
+};
+
   _getTotalStakedBalance = async (web3, asset, account, callback) => {
-    let erc20Contract = new web3.eth.Contract(config.erc20ABI, asset.address)
+    if(asset.id == "WETH/YFARMER Uniswap"){
+      var erc20Contract = new web3.eth.Contract(config.erc20ABI, "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2")
+    } else if(asset.id =="USDT/YFARMER Uniswap"){
+      var erc20Contract = new web3.eth.Contract(config.erc20ABI, "0xdac17f958d2ee523a2206206994597c13d831ec7")
+    } else if(asset.id =="WETH/pYFARMER Uniswap"){
+      var erc20Contract = new web3.eth.Contract(config.erc20ABI, "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2")
+    } else {
+      var erc20Contract = new web3.eth.Contract(config.erc20ABI, asset.address)
+    }
+    
 
     try {
-      var balance = await erc20Contract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
+      if(asset.id == "WETH/YFARMER Uniswap"){
+        var balance = await erc20Contract.methods.balanceOf(asset.address).call({ from: account.address });
+      } else if(asset.id =="USDT/YFARMER Uniswap"){
+        var balance = await erc20Contract.methods.balanceOf(asset.address).call({ from: account.address });
+      } else if(asset.id =="WETH/pYFARMER Uniswap"){
+        var balance = await erc20Contract.methods.balanceOf(asset.address).call({ from: account.address });
+      } else {
+        var balance = await erc20Contract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
+      }
+     // var balance = await erc20Contract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
       balance = parseFloat(balance)/10**asset.decimals
+      let dollarvalue = await this.lookUpPrices([asset.coinGeckoName]);
+      console.log(dollarvalue);
+      let obv = {
+        balance: parseFloat(balance),
+        usdvalue:dollarvalue[asset.coinGeckoName].usd * balance
+      }
       console.log(balance);
-      callback(null, parseFloat(balance))
+      callback(null, obv)
     } catch(ex) {
       return callback(ex)
     }

@@ -380,7 +380,7 @@ class Stake extends Component {
             <Typography variant={ 'h2' } className={ classes.overviewValue }>{ pool.tokens[0].balance ? pool.tokens[0].balance.toFixed(2) : "0" }  { pool.tokens[0].symbol }</Typography>
           </div>*/}
           <div className={classes.overviewField}>
-            <Typography variant={'h3'} className={classes.overviewTitle}>{t('Stake.WFYIBalance')}</Typography>
+        <Typography variant={'h3'} className={classes.overviewTitle}>{pool.tokens[0].rewardsSymbol != '$' ? pool.tokens[0].rewardsSymbol : ''} Balance</Typography>
             <Typography variant={'h2'} className={classes.overviewValue}>{pool.tokens[0].rewardsBalance ? pool.tokens[0].rewardsBalance.toFixed(2) : "0"} </Typography>
           </div>
           <div className={classes.overviewField}>
@@ -422,6 +422,7 @@ class Stake extends Component {
     return (
       <div className={classes.actions}>
         <div className={classes.actionContainer}>
+          {/*
           <Button
             fullWidth
             className={classes.primaryButton}
@@ -431,7 +432,7 @@ class Stake extends Component {
             onClick={() => { this.navigateInternal('stake') }}
           >
             <Typography className={classes.stakeButtonText} variant={'h4'}>{t('Stake.StakeTokens')}</Typography>
-          </Button>
+          </Button>*/}
         </div>{/*
         <div className={classes.actionContainer}>
           <Button

@@ -231,7 +231,7 @@ class RewardPools extends Component {
         </div>
         <div className={ classes.intro } style={{marginTop:"15px"}}>
           <Card className={ classes.addressContainer }>
-            <Typography variant={ 'h3'} className={ classes.walletTitle } noWrap>TVL: </Typography>
+            <Typography variant={ 'h3'} className={ classes.walletTitle } noWrap>TVL: {parseFloat(this.getCurrentlyStaked()).toFixed(4)} $ </Typography>
          {/*  <Typography variant={ 'h4'} className={ classes.walletAddress } noWrap> 500k $</Typography>*/} 
             <div style={{ background: '#DC6BE5', opacity: '1', borderRadius: '10px', width: '10px', height: '10px', marginRight: '3px', marginTop:'3px', marginLeft:'6px' }}></div>
           </Card>
@@ -245,6 +245,20 @@ class RewardPools extends Component {
         { modalOpen && this.renderModal() }
       </div>
     )
+  }
+  getCurrentlyStaked = () => {
+    console.log("GETTING TVL BALANCE");
+    const { rewardPools } = this.state
+    let totalUSDvalue = 0;
+     rewardPools.map((pools) => {
+       for(var i = 0; i< pools.tokens.length;i++){
+        totalUSDvalue = totalUSDvalue +pools.tokens[i].usdValue;
+       }
+   
+      
+    })
+    console.log(totalUSDvalue);
+       return totalUSDvalue;
   }
 
   renderRewards = () => {
